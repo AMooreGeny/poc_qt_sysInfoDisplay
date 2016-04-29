@@ -4,6 +4,7 @@
 #include <QDebug>
 
 // http://doc.qt.io/qt-5/qsysinfo.html
+// http://doc.qt.io/qt-5/qtglobal.html#Q_OS_OSX
 
 int main(int argc, char *argv[])
 {
@@ -20,9 +21,14 @@ int main(int argc, char *argv[])
     qDebug() << "currentCpuArchitecture : " << QSysInfo::currentCpuArchitecture();
     qDebug() << "kernelType : " << QSysInfo::kernelType();
     qDebug() << "kernelVersion : " << QSysInfo::kernelVersion();
+    qDebug() << "prettyProductName : " << QSysInfo::prettyProductName();
     qDebug() << "productType : " << QSysInfo::productType();
     qDebug() << "kernelType : " << QSysInfo::kernelType();
     qDebug() << "productVersion : " << QSysInfo::productVersion();
+
+#if QT_VERSION >= 0x050600
+    qDebug() << "machineHostName : " << QSysInfo::machineHostName();
+#endif
 
 #ifdef Q_OS_MAC
     qDebug() << "macVersion : " << QSysInfo::macVersion();
